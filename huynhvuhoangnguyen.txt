@@ -1,0 +1,78 @@
+1. Viết chương trình/lệnh mô tả các bước thực hiện sơ đồ git tree sau đây ở local repository:
+--> 	- git init: tạo local repository
+	- git checkout -b todo-app.1.0	 
+	- tạo file c1.txt
+	- git add c1.txt
+	- git commit -m "Add file c1"
+	- tạo file c2.txt
+	- git add c2.txt
+	- git commit -m "Add file c2"
+	- tạo file c3.txt
+	- git add c3.txt
+	- git commit -m "Add file c3"
+	- git checkout -b feature
+	- tạo file c4.txt
+	- git add c4.txt
+	- git commit -m "Add file c4"
+	- tạo file c5.txt
+	- git add c5.txt
+	- git commit -m "Add file c5"
+	- git checkout todo-app-1.0
+	- git checkout -b bug
+	- tạo file c6.txt
+	- git add c6.txt
+	- git commit -m "Add file c6"
+	- tạo file c7.txt
+	- git add c7.txt
+	- git commit -m "Add file c7"
+	- tạo file c8.txt
+	- git add c8.txt
+	- git commit -m "Add file c8"
+
+2. Viết lệnh thực hiện gộp nhánh bug vào nhánh feature sử dụng git merge --> git checkout feature, git merge bug.
+3. Viết lệnh thực hiện gộp nhánh feature vào bug sử dụng git rebase --> git checkout bug, git rebase feature.
+4. Phân biệt git merge và git rebase(giống, khác nhau, khi nào nên sử dụng):
+--> Giống nhau: git merge và git rebase đều giúp gộp các nhánh lại với nhau trong quá trình làm việc.
+    Khác nhau: git merge sẽ tìm commit cha chung gần nhất của các nhánh và thực hiện merge tại commit đó, tạo ra
+một commit mới có chứa thông tất cả các thông tin từ hai nhánh được merge
+		   git rebase sẽ đưa toàn bộ các commit ở nhánh bị gộp vào đầu của nhánh mà ta đang ở trên, lịch sử của
+dự án sẽ được viết lại với những commit mới này.
+		   dùng git merge khi ta muốn bảo toàn lịch sử của dự án, dùng git rebase nếu ta muốn có một lịch sử của
+dự án gọn gàng.
+5. Phân biệt git fetch và git clone:
+	git fetch: lấy thông tin từ remote repository về local repository
+	git clone: tạo một bản sao của remote repository và lưu bản sao này về máy cá nhân như một local repository.
+6. Phân biệt git fetch và git pull:
+	git fetch: lấy thông tin từ remote repository về local repository
+	git pull: thực hiện cập nhật repository lên local repository.
+7. Phân biệt git pull và git pull --rebase
+	git pull: thực hiện cập nhật remote repository lên local repository.
+	git pull --rebase: cập nhật remote repository lên local repository nhưng sẽ rebase các commit để có được lịch sử sạch sẽ hơn.
+8. Git log dùng để làm gì: git log dùng để xem lich sử của repository, liệt kê ra các thông tin chi tiết của các commit.
+9. Git status dùng để làm gì: git status dùng để xem trạng thái của các file được theo dõi trong repository là đang ở trạng thái nào,
+untracked, modified, hay staged.
+10. Git add dùng để làm gì: git add dùng để đưa file đang ở trạng thái untracked hoặc modified sang trạng thái staged để có thể được commit.
+12. Mô tả lệnh để tạo branch ở local: git branch <tên nhánh>
+13. Mô tả lệnh để xóa branch ở local: git branch -d <tên nhánh>
+14. Mô tả lệnh để xóa branch ở remote: git push origin --delete <tên nhánh>
+15. Nhánh trung gian là gì
+16. Detach HEAD là gì: Detach HEAD là con trỏ HEAD
+17. Phân biệt HEAD và BRANCH
+- HEAD là con trỏ trỏ đến nhánh hiện tại đang hoạt động, chỉ có duy nhất một HEAD.
+- BRANCH là nhánh làm việc được tạo ra để thực hiện các công việc khác nhau, fix bug, v...
+18. Có mấy cách để xóa commit, mô tả và cho ví dụ: Có 2 cách:
+- git --amend -m: xóa commit và tạo commit mới và thay đổi commit message.
+- git --amend --no-edit: xóa commit cũ và tạo commit mới nhưng giữ nguyên tin nhắn
+19. Liệt kê các trạng thái của file trong git, giải thích từng trạng thái:file trong git có 4 trạng thái:
+- untrack: chưa được theo dõi bởi git
+- tracked: được theo dõi bởi git nhưng chưa sẵn sàng để commit.
+- modified: được theo dõi bởi git, vừa được sửa đổi, chưa sẵn sàng để commit.
+- stage: được theo dõi bởi git, sẵn sàng để commit
+20. Mô tả các bước cần thực hiện khi nhận 1 task từ dự án, cho ví dụ:
+- Xác định task đó thuộc nhánh nào của dự án. vd: verson 1.0
+- Xác định version đó đang được code trên nhánh nào của remote repoistory, vd đang ở nhánh version-1.0
+- Lấy code về, git fetch origin
+- tạo nhánh ở local để làm tiếp task
+- code
+- add commit và push code
+- nếu bị reject thì phải cập nhật remote về local rồi push lên lại
