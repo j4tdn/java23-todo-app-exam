@@ -1,0 +1,91 @@
+1.Viết chương trình/lệnh mô tả các bước thực hiện sơ đồ git tree sau đây ở local repository
+git init
+touch c1.txt
+git add c1.txt
+git commit -m "Add file c1.txt"
+touch c2.txt
+git add c2.txt
+git commit -m "Add file c2.txt"
+touch c3.txt
+git add c3.txt
+git commit -m "Add file c3.txt"
+git checkout -b feature master
+touch c4.txt
+git add c4.txt
+git commit -m "Add file c4.txt"
+touch c5.txt
+git add c5.txt
+git commit -m "Add file c5.txt"
+git checkout master
+git checkout -b bug master
+touch c6.txt
+git add c6.txt
+git commit -m "Add file c6.txt"
+touch c7.txt
+git add c7.txt
+git commit -m "Add file c7.txt"
+touch c8.txt
+git add c8.txt
+git commit -m "Add file c8.txt"
+2. Viết lệnh thực hiện gộp nhánh bug vào nhánh feature sử dụng git merge 
+git checkout feature
+git merge bug
+3. Viết lệnh thực hiện gộp nhánh feature vào bug sử dụng git rebase 
+git checkout feature
+git rebase bug
+4. Phân biệt git merge và git rebase(giống, khác nhau, khi nào nên sử dụng) 
+Giống: Đều dùng gộp 2 nhánh thành một nhánh
+Khác nhau: 
+-Git merge: tạo ra một commit mới nhưng giữ nguyên các commit cũ
+-Git rebase: Giữ nguyên số lượng commit nhưng tạo ra commit mới trên nhánh gộp vào
+Nên sử dụng:
+-Git merge:thường dùng để gộp các nhanh fix bug vào các nhanh của version hiện tại
+-Git rebase:
+5. Phân biệt git fetch và git clone 
+-Git fetch: Dùng để lấy những cái mà có ở trên remote repository mà local repository chưa có
+-git clone: Dùng để sao chép hoàn toàn remote repository về local repository
+6. Phân biệt git fetch và git pull 
+-Git fetch: Dùng để lấy những cái mà có ở trên remote repository mà local repository chưa có
+-Git pull:  Dùng để lấy những cái mà có ở trên remote repository mà local repository chưa có nhưng git fetch tự động merge những dữ liệu mà local repository chưa có
+7. Phân biệt git pull và git pull --rebase 
+-Git pull: Dùng để lấy những cái mà có ở trên remote repository mà local repository chưa có nhưng git fetch tự động merge những dữ liệu mà local repository chưa có
+-Git pull --rebase: Dùng để lấy những cái mà có ở trên remote repository mà local repository chưa có nhưng git fetch tự động rebase những dữ liệu mà local repository chưa có
+8. Git log dùng để làm gì 
+-Git log dùng để: Khi mà HEAD trỏ đến commit nào thì git log dùng để xem các commit từ commit hiện tại mà HEAD đang trỏ đến trở về trước
+9. Git status dùng để làm gì 
+-Git status dùng để kiểm tra trạng thái các file ở trong khu vực làm việc
+10. Git add dùng để làm gì 
+-Git add dùng để thêm các file vừa mới được thêm vào (Untrack) hoặc các phải vừa được sửa (Modifile) vào trạng thái stay
+11. Git commit dùng để làm gì 
+-Git commit dung để hoàn thành commit vừa xong và tạo ra commit mới
+12. Mô tả lệnh để tạo branch ở local 
+-git branch <Tên nhánh mới> <Tên nhánh cũ>
+-git checkout -b <Tên nhánh mới> <Tên nhánh cũ>
+13. Mô tả lệnh để xóa branch ở local 
+-git branch -d <Tên branch muốn xóa>
+14. Mô tả lệnh để xóa branch ở remote 
+git push origin --delete <Tên nhánh muốn xóa>
+15. Nhánh trung gian là gì 
+-Nhánh trung gian là nhánh đại diện cho nhánh ở remote nhưng nằm trên local
+16. Detach HEAD là gì 
+-Detach HEAD là hiện tượng khi mà HEAD trỏ thẳng vào commit
+17. Phân biệt HEAD và BRANCH 
+-HEAD là khu vực làm việc, HEAD trỏ đến commit nào thì sẽ hiện code ở commit đó ra
+-BRANCH là nhánh chứa các commit, mỗi nhánh đại diện cho một version riêng biện
+18. Có mấy cách để xóa commit, mô tả và cho ví dụ 
+-Git reset --hard HEAD~x trong đó x là số lượng commit muốn xóa ngược lại
+19. Liệt kê các trạng thái của file trong git, giải thích từng trạng thái 
+-Untrack: Khi các file vừa mới được tạo ra thì ở trạng thái untrack
+-Stay:
+-modified:Các file đã được commit nhưng sửa code thì sẽ tự động chuyển từ unmodified sang modified
+-unmodified: Các file mà được commit thành công thì được chuyển sang trạng thái unmodified
+20. Mô tả các bước cần thực hiện khi nhận 1 task từ dự án, cho ví dụ 
+-Tạo nhánh version-1.2
+-checkout qua version 1.2
+-Đầu tiên vào file readme.txt sửa thành version 1.2-SNAPSHOT
+-git add -> Git commit -m "Update version 1.2-SNAPSHOT"
+-coding ....
+-git add -> Git commit -m "Fix/Add function ...."
+-Mở file git readme.txt sửa thành "version 1.2" xóa chữa SNAPSHOT
+-git add -> Git commit -m "Release version 1.2"
+
