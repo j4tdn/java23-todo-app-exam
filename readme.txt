@@ -1,2 +1,2 @@
 project: todo-app-exam
-version: ..........
+version: TODO-APP-4.0-SNAPSHOT
