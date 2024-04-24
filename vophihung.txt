@@ -1,0 +1,119 @@
+Name: Võ Phi Hùng
+
+1. Viết chương trình/lệnh mô tả các bước thực hiện sơ đồ git tree sau đây ở local repository
+git init
+touch c1.txt c2.txt c3.txt
+git add .
+git commit -m "Add file c1 c2 c3"
+git checkout -b feature master
+touch c4.txt c5.txt
+git add .
+git commit -m "Add file c4 c5"
+git checkout -b bug master
+touch c6.txt c7.txt c8.txt
+git add .
+git commit -m "Add file c6 c7 c8"
+
+2. Viết lệnh thực hiện gộp nhánh bug vào nhánh feature sử dụng git merge
+--> git checkout feature
+--> git merge bug
+
+3. Viết lệnh thực hiện gộp nhánh feature vào bug sử dụng git rebase
+--> git checkout bug
+--> git rebase feature
+
+4. Phân biệt git merge và git rebase(giống, khác nhau, khi nào nên sử dụng)
+- Giống:
++ Đều gộp nhánh 
++ Khi gộp trên 1 đường thẳng 
+- Khác: Khi gộp 2 nhánh khác line 
++ Merge: tạo commit merge
++ Rebase: không tạo commit merge, kh để lại lịch sử gộp
+- Sử dụng merge khi 
+--> Gộp 2 nhánh của 2 version dự án để làm dấu 
+- Sử dụng Rebase
+--> Push commit vừa làm xong lên nhánh remote của dự án 
+
+5. Phân biệt git fetch và git clone
+- Git fetch:
+--> Đồng bộ các commit, các nhánh từ Remote về Local
+- Git clone:
+--> Đưa về local tất cả các file, commit từ Remote
+
+6. Phân biệt git fetch và git pull
+
+7. Phân biệt git pull và git pull --rebase
+
+8. Git log dùng để làm gì
+--> Dùng để xem các commit HEAD đang trỏ vào và các commit cha của nó 
+
+9. Git status dùng để làm gì
+--> Xem trạng thái các file
+
+10. Git add dùng để làm gì
+--> Đưa file từ trạng thái Untracked hoặc Modified sang Staged
+
+11. Git commit dùng để làm gì
+--> Đưa file từ Staged sang Unmodified và đặt Message cho commit đó
+
+12. Mô tả lệnh để tạo branch ở local
+- Tạo từ HEAD --> git branch feature
+- Tạo từ nhánh master --> git branch feature master
+
+13. Mô tả lệnh để xóa branch ở local
+--> Git branch -d <Tên nhánh>
+
+14. Mô tả lệnh để xóa branch ở remote
+--> Git push origin -d <Tên nhánh ở remote>
+
+15. Nhánh trung gian là gì
+- Nhánh trung gian là nhánh đại diện cho nhánh ở Remote tại local 
+--> Nhánh trung gian kh thể sửa - thêm - bớt Commits
+
+16. Detach HEAD là gì
+--> Là trạng thái HEAD chỉ thẳng đển 1 commit mà commit đó kh thuộc nhánh nào tại local
+
+17. Phân biệt HEAD và BRANCH
+- HEAD: Gọi là con trỏ --> Khi HEAD trỏ đến đâu thì thư mục làm việc ở đó
+--> HEAD có thể trỏ đến Branch hoặc Commit
+- Branch: Gọi là nhánh --> Đại diện cho 1 version trong dự án, chứa các commit (chức năng) trong dự án và nhánh chỉ có thể trỏ đến commit 
+
+18. Có mấy cách để xóa commit, mô tả và cho ví dụ
+- Có 2 cách để xóa commit 
++ C1: Xóa commit giữ lại nội dung
+--> git reset --soft HEAD~n (n là số commit muốn xóa tính từ HEAD trở về trước)    
++ C2: Xóa bay commit không giữ lại nội dung
+--> git reset --hard HEAD~n (n là số commit muốn xóa tính từ HEAD trở về trước)  
+
+19. Liệt kê các trạng thái của file trong git, giải thích từng trạng thái
+- Untracked: File mới tạo, chưa được add
+- Staged: Sẵn sàng COMMIT
+- Unmodified: Đã được COMMIT
+- Modified: Đã commit --> mở ra --> sửa 
+
+20. Mô tả các bước cần thực hiện khi nhận 1 task từ dự án, cho ví dụ
+==== Các bước thực hiện khi bắt đầu nhận 1 task từ dự án ===
+- Khi nhận 1 task tính tổng 2 số tại version 1.0 nhánh todo-app-1.0
+B1: Xác định task ở version nào - version đó đang được code ở nhánh nào ở Remote
+--> git fetch 
+B2: Tạo nhánh ở local từ nhánh trung gian 
+--> git branch task-sum2 origin/todo-app-1.0
+--> git checkout task-sum2
+B3: Coding
+--> touch sum2.txt
+--> coding
+--> git add sum2.txt
+--> git commit -m "Add sum2 function"
+B4: Push code lên Remote
+--> git fetch
+--> git push origin task-sum2:todo-app-1.0
+====== Nếu bị reject ======
+--> git fetch
+--> git rebase origin/todo-app-1.0
+--> git push origin task-sum2:todo-app-1.0
+
+
+
+
+
+

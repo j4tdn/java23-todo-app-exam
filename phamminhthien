@@ -1,0 +1,124 @@
+1.Lệnh mô tả sơ đồ:
+- git init
+
++ touch c1
++ git add .
++ git commit -m "Add file c1"
++ touch c2
++ git add.
++ git commit -m "Add file c2"
++ touch c3
++ git add .
++ git commit -m "Add file c3"
+
++ git checkout -b feature master
++ touch c4
++ git add .
++ git commit -m "Add file c4"
++ touch c5
++ git add .
++ git commit -m "Add file c5"
+
++ git checkout -b bug master
++ touch c6
++ git add .
++ git commit -m "Add file c6"
++ touch c7
++ git add .
++ git commit -m "Add file c7"
++ touch c8
++ git add .
++ git commit -m "Add file c8"
+- git log --oneline --all --decorate --graph
+
+2. Lệnh gộp nhánh bug vào feature bằng merge:
+- git checkout feature
+- git merge bug
+3. Lệnh gộp nhánh feature vào bug bằng rebase:
+- git checkout bug
+- git rebase feature
+
+4. Phân biệt git merge và git rebase:
+- Giông: git merge và git rebase đều là lệnh gộp 2 nhánh lại với nhau trong git
+- Khác: 
+  + git merge: khi chạy lệnh này sẽ tạo ra 1 commit mới (commit merge) bằng cách gộp 2 nhánh lại với nhau và để lại commit trong lịch sử commit
+  + git rebase: khi chạy lệnh này số lượng commit không thay đổi và không để lại commit nào trong lịch sử commit
+- Sử dụng:
+    + git merge: sử dụng khi gộp 2 nhánh lại với nhau
+    + git rebase: khi muốn push code lên sau khi code xong nhưng bị reject
+
+5. Phân biệt git fetch và git clone:
+- git fetch: là lệnh đồng bộ code từ remote về local, nếu ở local chưa có branch của remote thì sẽ tự tạo ra nhánh trung gian đại diện và có code mới nhất của remote
+- git clone: là lệnh sao chép toàn bộ dự án từ remote về local và remote và local tự động ánh xạ với nhau
+
+6. Phân biệt git fetch và git pull:
+- git fetch: là lệnh đồng bộ code từ remote về local, nếu ở local chưa có branch của remote thì sẽ tự tạo ra nhánh trung gian đại diện và có code mới nhất của remote
+- git pull: là lệnh đồng bộ code tù remote về local và đồng thời gộp nhánh ở remote về nhánh hiện tại
+
+7. Phân biệt git pull và git pull --rebase:
+- git pull: là lệnh đồng bộ code từ remote về local và đồng thời gộp(merge) nhánh ở remote về nhánh hiện tại 
+- git pull --rebase: là lệnh đồng bộ code từ remote về local và đồng thời gộp(rebase) nhánh ở remote về nhánh hiện tại
+
+8. git log là lệnh dùng để xem lịch sử commit
+
+9. git status là lệnh dùng để xem trạng thái của file được quản lý bởi git
+
+10. git add là lệnh dùng để đưa file sang trại thái staged để sẵn sàng commit 
+
+11. git commit là lệnh dùng để tạo ra 1 commit trong repository
+
+12. Lệnh tạo branch ở local: 
+- git branch branch_name 
+Lệnh này tạo ra branch mới từ branch mà hiện tại HEAD đang trỏ đến
+
+- git branch new_branch old_branch
+Lệnh này tạo ra branch mới từ tên branch cũ
+
+- git checkout -b new_branch old_branch
+Lệnh này tạo ra branch mới từ branch cũ và checkout sang branch mới
+
+13. Lệnh xóa branch ở local:
+- git branch -d branch_name
+Lệnh này kiểm tra là branch này đã được merge chưa, nếu đã được merge thì sẽ hiển thị thông báo để tránh mất dữ liệu còn nếu chưa thì thực hiện xóa
+
+- git branch -D branch_name 
+Lệnh này sẽ xóa branch ngay lập tức
+
+14. Lệnh xóa branch ở remote:
+- git push origin branch_name -d
+
+15. Nhánh trung gian là nhánh nằm ở local đại diện cho nhánh tương ứng nằm ở remote
+
+16. Detach HEAD là trạng thái HEAD đang trỏ trực tiếp đến commit
+
+17. Phân biệt HEAD VÀ BRANCH:
+- HEAD: là con trỏ đặc biệt trong git, nó vừa có thể trỏ đến branch và trỏ đến commit
+- BRANCH: là con trỏ trong git nó chỉ có thể trỏ đến commit
+
+18. Cách xóa commit:
+- Có 2 cách để xóa commit:
+ + git reset --hard HEAD~x
+Lệnh này thực hiện xóa commit và xóa luôn nội dung của commit đó
+ 
+ + git reset --soft HEAD~X
+Lệnh này sẽ thực hiện xóa commit và giữ lại nội dung của commit đó
+x: là số commit muốn xóa
+- VD: 
+ + Đang có 3 commit: 1-2-3, HEAD đang trỏ đến commit 3
+ + Ta dùng lệnh: git reser --hard HEAD~1 thì sẽ xóa commit 3
+ + Và còn lại 2 commit: 1-2
+
+19. Trạng thái của file trong git:
+- Untracked: là trạng thái file vừa được tạo hoặc chưa add(staged)
+- Unmodified: là trạng thái file đã được commit
+- Modified: là trạng thái file đã bị sửa lại sau khi commit
+- Staged: là trạng thái đã được add sẵn sàng commit
+
+20. Các bước cần làm sau khi nhận task:
+- B1: Xác định xem task đó nằm ở task số mấy và nằm ở version nào
+- B2: Xác định branch nào đại diện cho task đó
+- B3: git fetch [origin] đồng bộ từ remote về
+- B4: thực hiện yêu cầu của task (coding..)
+- B5: add, commit
+- B6: Push code lên lại remote (push đúng remote đại diện cho task)
+

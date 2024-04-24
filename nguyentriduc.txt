@@ -1,0 +1,111 @@
+1. Viết chương trình/lệnh mô tả các bước thực hiện sơ đồ git tree sau đây ở local repository
+git init
+touch c1.txt
+git add c1.txt
+git commit -m 'Add c1.txt'
+touch c2.txt
+git add c2.txt
+git commit -m 'Add c2.txt'
+touch c3.txt
+git add c3.txt
+git commit -m 'Add c3.txt'
+git checkout -b feature master
+touch c4.txt
+git add c4.txt
+git commit -m 'Add c4.txt'
+touch c5.txt
+git add c5.txt
+git commit -m 'Add c5.txt'
+git checkout -b bug master
+touch c6.txt
+git add c6.txt
+git commit -m 'Add c6.txt'
+touch c7.txt
+git add c7.txt
+git commit -m 'Add c7.txt'
+touch c8.txt
+git add c8.txt
+git commit -m 'Add c8.txt'
+
+2. Viết lệnh thực hiện gộp nhánh bug vào nhánh feature sử dụng git merge
+git checkout feature
+git merge bug
+
+3. Viết lệnh thực hiện gộp nhánh feature vào bug sử dụng git rebase
+git checkout feature
+git rebase bug
+
+4. Phân biệt git merge và git rebase(giống, khác nhau, khi nào nên sử dụng)
+giống: đều gộp code khác nhánh 
+khác: merge gộp HEAD với thằng cuối cùng bên kia -> nhiều commit nên sử dụng
+     rebase tìm điểm chung gần nhất, tiến hành gộp từng lần 1 -> ít commit, muốn đẹp
+
+5. Phân biệt git fetch và git clone
+git fetch chỉ đưa các commit không bị xung đột 
+git clone tải về toàn bộ các commit được push lên remote
+
+
+6. Phân biệt git fetch và git pull
+git pull = git fetch + git merge 
+
+7. Phân biệt git pull và git pull --rebase
+git pull = git fetch + git merge
+git pull --rebase = git fetch + git rebase
+
+8. Git log dùng để làm gì
+coi lại lịch sử commit
+
+9. Git status dùng để làm gì
+hiển thị các file trong các tình trạng (untracked, modified, unmodified, staged) 
+
+10. Git add dùng để làm gì
+thêm các file untracked, modified vào stage -> chuẩn bị cho commit
+
+11. Git commit dùng để làm gì
+lưu version mới của git vào local 
+
+12. Mô tả lệnh để tạo branch ở local
+git branch <name_moi> <name_cu>
+tạo branch từ nhánh cũ có tên nhánh mới
+
+13. Mô tả lệnh để xóa branch ở local
+git branch -D <name>
+
+14. Mô tả lệnh để xóa branch ở remote
+-> vào thẳng git remote để bấm xoá ....
+
+15. Nhánh trung gian là gì
+
+
+16. Detach HEAD là gì
+là head chỉ đến 1 commit chưa thuộc 1 nhánh nào -> dễ mất, không tìm lại được.
+
+17. Phân biệt HEAD và BRANCH
+HEAD -> hiển thị thư mục hiện tại đang làm việc (có 1 head)
+branch -> có nhiều branch và mỗi branch lưu 1 giai đoạn làm việc
+
+18. Có mấy cách để xóa commit, mô tả và cho ví dụ
+git reset --hard HEAD~n
+-> xoá n commit từ head không giữ lại code
+git reset --soft HEAD~n
+-> xoá n commit từ head giữ lại code
+VD: làm sai từ bước trước đó, sử dụng git reset hard để quay lại.
+
+git commit --amend -m '' -> đổi tên commit hoặc đổi code xong commit lại.
+git commit --amend --no--edit -> update commit 
+VD: sau khi commit thấy còn thiếu code hoặc sai tên thì sử dụng 
+
+19. Liệt kê các trạng thái của file trong git, giải thích từng trạng thái
+untracked: file tạo mới
+unmodified: file đã lưu, không có chỉnh sửa
+modified: file đã lưu có chỉnh sửa
+staged: file sẵn sàng để commit 
+
+20. Mô tả các bước cần thực hiện khi nhận 1 task từ dự án, cho ví dụ
+Đầu tiên clone về, nếu chưa có tạo repos trên remote và tạo các folder cấu trúc dự án.
+-> git fetch 
+-> kiểm tra version, checkout đến version đang cần làm việc
+-> code và commit
+-> push 
+
+

@@ -1,0 +1,69 @@
+1.Viết chương trình các bước sơ đồ git tree:
+-git init
+-touch c1.txt
+	git add c1.txt
+	git commit-m "Add c1.txt"
+-touch c2.txt
+	git add c2.txt
+	git commit-m "Add c2.txt"
+-touch c3.txt
+	git add c3.txt
+	git commit-m "Add c3.txt"
+-git branch feature
+-git checkout feature
+-touch c4.txt
+	git add c4.txt
+	git commit-m "Add c4.txt"
+-touch c5.txt
+	git add c5.txt
+	git commit-m "Add c5.txt"
+-git branch bug main
+-git checkout bug
+-touch c6.txt
+	git add c6.txt
+	git commit-m "Add c6.txt"
+-touch c7.txt
+	git add c7.txt
+	git commit-m "Add c7.txt"
+-touch c8.txt
+	git add c8.txt
+	git commit-m "Add c8.txt"
+2. Lệnh gộp nhánh bug vào nhánh feature
+git checkout feature
+git merge bug
+3. Lệnh gộp nhanh bug và nhánh feature dùng rebase
+git checkout feature
+git rebase bug
+4. Phân biệt git merge và git rebase
+-giống: đều dùng để gộp nhánh
+8. Git log dùng để:
+Git log dùng để xe lịch sử các commit
+Xem HEAD đang trỏ đến commit nào
+
+9.Git status dùng để:
+Git status dùng để xem trạng thái của các file
+
+10. Git add dùng để:
+Git add dùng để thêm file và đưa file từ untracked sang staged
+
+11. Git commit dùng để:
+Git commit dùng để viết message và đưa các file từ trạng thái staged sang unmodified 
+
+12. Mô tả lệnh để tạo branch ở local:
+Tạo từ HEAD > git branch feature
+Tạo từ nhánh master > git branch feature master
+
+13. Mô tả lệnh để xóa branch ở local:
+Git branch -d <tên nhánh>
+
+14. Mô tả lệnh để xóa branch ở remote
+Git push origin -d <tên nhánh ở remote>
+
+15. Nhánh trung gian là gì
+Nhánh trung gian là nhánh đại diện cho nhánh ở remote tại local 
+nhánh trung gian kh thể sửa - thêm - bớt Commits
+
+
+
+
+
