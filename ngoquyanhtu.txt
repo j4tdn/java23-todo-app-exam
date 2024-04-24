@@ -1,0 +1,66 @@
+1.
+touch c1.txt
+touch c2.txt
+touch c3.txt
+git add c1.txt c2.txt c3.txt
+git commit -m "Add c1 c2 c3"
+git branch -b feature
+touch c4.txt
+touch c5.txt
+git add c4.txt c5.txt
+git commit -m "Add c4 c5"
+git checkout master
+git branch -b bug
+touch c6.txt
+touch c7.txt
+touch c8.txt
+git add c6.txt c7.txt c8.txt
+git commit -m "Add c6 c7 c8"
+2.
+git checkout feature
+git merge bug
+3.
+git checkout bug
+git merge feature
+4.
+git merge dùng để gộp các commit trong cùng một 
+git merge chỉ có thể reject 1 lần
+git rebase có thể reject nhiều lần
+
+
+
+
+
+
+8.git log dùng để xem các commit
+9.git status dùng để xem trạng thái của file
+10.git add dùng để add file vào trạng thái staged
+11.git commit dùng để đưa file vào trạng thái modifiled
+12.git branch tên nhánh
+13.git rm branch tên nhánh
+14.git push origin -d tên nhánh
+15.nhánh trung gian là nhánh đại diện cho nhánh trên remote ở local
+16 Detach HEAD là khi mình add commit trên một nhánh mà nhánh đó không có trong dự án
+17.
+HEAD là con trỏ 
+Branch là nhánh 
+18.Có 2 cách để xóa commit
+git commit -rm tên commit xóa commit đã commit
+git commit --amend "..." dùng để sửa tên commit
+19,có 4 trạng thái file trong git
+untracked là trạng thái file đang làm chưa add chưa commit
+unmodifiled là trạng thái file đã được commit
+modifiled là trạng trái file đã commit nhưng đang sử chưa commit
+staged là trạng thái file sẵn sàng commit
+20.thì xem task đó từ version nào,nhánh nào
+git fecth
+git branch tên nhánh 
+git checkout tên nhánh
+coding...
+git add
+git commit
+git push 
+
+
+
+
